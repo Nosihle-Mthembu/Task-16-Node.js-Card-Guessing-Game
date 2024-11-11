@@ -1,0 +1,59 @@
+/* Container for the game */
+.game-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* The grid of cards */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(6, 100px); /* 6 columns */
+  grid-gap: 10px;
+}
+
+/* Style for each card */
+.card {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  perspective: 1000px; /* Add perspective for 3D flipping */
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d; /* 3D effect for flip */
+  transition: transform 0.5s;
+}
+
+.card.flipped .card-inner {
+  transform: rotateY(180deg); /* Flip the card when it's clicked */
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* Hide the back face when flipped */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+/* Style for the front of the card */
+.card-front {
+  background-color: #f0f0f0;
+  color: black;
+}
+
+/* Style for the back of the card (where the number will appear) */
+.card-back {
+  background-color: #4CAF50; /* Green background */
+  color: white;
+  transform: rotateY(180deg); /* Rotate the back face */
+}
