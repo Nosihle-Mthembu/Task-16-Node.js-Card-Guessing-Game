@@ -93,15 +93,89 @@ function shuffleCards() {
       [firstCard, secondCard, lockBoard] = [null, null, false];
   }
 
-  // Reset game functionality
-  // Reset game functionality
-function resetGame() {
-    matchedPairs = 0;
+// Reset game functionality
+// document.getElementById('resetButton').addEventListener('click', resetGame);
+
+// function resetGame() {
+//     // Prevent default behavior if the function is bound to an event
+//     if (event) event.preventDefault();
+
+//     // Reset game variables (example)
+//     score = 0;
+//     moves = 0;
+//     flippedCards = [];
+
+//     // Shuffle and re-render the cards
+//     shuffleCards();
+//     renderCards();
+
+//     // Reset the UI elements (if you have score and move displays)
+//     document.getElementById('scoreDisplay').textContent = score;
+//     document.getElementById('movesDisplay').textContent = moves;
+
+//     console.log("Game has been reset!");
+// }
+
+
+// function renderCards() {
+//     // Render the shuffled cards on the grid
+//     const gameGrid = document.getElementById('gameGrid');
+//     gameGrid.innerHTML = '';  // Clear the grid
+//     cards.forEach(card => {
+//         // Add code to render each card in the shuffled order
+//         gameGrid.appendChild(createCardElement(card));
+//     });
+// }
+
+// Reset game functionality  
+document.getElementById('resetButton').addEventListener('click', resetGame);  
+  
+function resetGame() {  
+  if (event) event.preventDefault();  
+  
+  // Reset game variables  
+  matchedPairs = 0;  
+  
+  // Reset each card's state and DOM element  
+  cards.forEach(card => {  
+   card.classList.remove('flipped', 'matched');  
+  });  
+  
+  // Shuffle the cards  
+  shuffleCards();  
+}
+
+
+function renderCards() {
+    const gameGrid = document.getElementById('gameGrid');
+    
+    // Ensure the game grid exists in the DOM
+    if (!gameGrid) {
+        console.error("Game grid element not found in the DOM.");
+        return;
+    }
+
+    gameGrid.innerHTML = ''; // Clear the grid
+
+    // Render each card by creating and appending elements
     cards.forEach(card => {
-        card.classList.remove('flipped');
-        card.addEventListener('click', flipCard); // Re-enable click listeners after reset
+        const cardElement = createCardElement(card);
+        cardElement.id = `card-${card.id}`; // Ensure each card has a unique ID
+        gameGrid.appendChild(cardElement);
     });
-    shuffleCards(); // Shuffle the cards after the reset
+}
+
+function createCardElement(card) {
+    const cardElement = document.createElement('div');
+    cardElement.classList.add('card');
+
+    // Set initial content to the card back
+    cardElement.innerHTML = card.backContent;
+
+    // Event listener for flipping the card
+    cardElement.addEventListener('click', () => flipCard(card));
+
+    return cardElement;
 }
 
 });
