@@ -9,6 +9,8 @@ body {
   margin: 0;
   padding: 0;
   height: 100vh;
+  background-image: url(https://store-images.s-microsoft.com/image/apps.54588.14090654178473619.aa2706f7-9244-4d37-b59f-3f87f7589476.6a5a6db1-70ba-4b57-a879-7f9264cd3a40?mode=scale&q=90&h=1080&w=1920);
+  background-size: cover;
 }
 
 /* Instructions container */
@@ -19,12 +21,12 @@ body {
 
 .game-instructions h2 {
   font-size: 2em;
-  color: #333;
+  color: #dbcfcf;
 }
 
 .game-instructions p {
   font-size: 1.2em;
-  color: #666;
+  color: #ffffff;
 }
 
 /* Start game button */
@@ -51,14 +53,6 @@ body {
   align-items: center;
   margin-top: 30px;
 }
-
-/* The grid of cards */
-/* .grid {
-  display: grid;
-  grid-template-columns: repeat(6, 100px);
-  gap: 15px;
-  margin-top: 20px;
-} */
 
 /* Style for each card */
 .card {
@@ -155,4 +149,60 @@ button[onclick="resetGame()"]:hover {
   gap: 15px;
   justify-content: center; /* Center-aligns the grid */
   margin-top: 20px;
+}
+
+/* public/styles.css */
+.win-message {
+  text-align: center;
+  padding: 20px;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+/* Add styles for the win message container */
+.win-message {
+  text-align: center;
+  padding: 20px;
+  background-color: #5886c4;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: 50px auto;
+}
+
+/* Style for the heading */
+.win-message h1 {
+  font-size: 2rem;
+  color: #e7ece7;
+  margin-bottom: 20px;
+}
+
+/* Style for buttons */
+.win-message button {
+  background-color: #42ad62; /* Green background */
+  color: white;
+  font-size: 1rem;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover effect for the buttons */
+.win-message button:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
+/* Style for 'Go Back to Home' button */
+.win-message button:first-child {
+  background-color: #2196F3; /* Blue background */
+}
+
+.win-message button:first-child:hover {
+  background-color: #0b7dda;
 }

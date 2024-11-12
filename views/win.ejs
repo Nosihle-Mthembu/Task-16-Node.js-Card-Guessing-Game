@@ -7,10 +7,12 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <div class="win-message">
-        <h1>Congratulations! You Won!</h1>
-        <button id="startGameBtn" onclick="endGame()">Home</button>
-        <button id="resetGameBtn" onclick="resetGame()">Play Again</button>
-    </div>
+    <!-- views/win.ejs -->
+<div class="win-message">
+    <h1>Congratulations! You Won!</h1>
+    <button onclick="window.location.href='/'">Go Back to Home</button>
+    <button onclick="window.location.href='/game'">Play Again</button>
+</div>
 </body>
 </html>
+

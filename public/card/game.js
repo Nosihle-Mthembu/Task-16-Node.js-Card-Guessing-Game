@@ -18,15 +18,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const cards = document.querySelectorAll('.card');
 
   // Shuffle cards
-  function shuffleCards() {
-      const cardsArray = Array.from(cards); // Convert NodeList to Array for shuffling
-      cardsArray.sort(() => Math.random() - 0.5); // Shuffle cards
+ // Shuffle cards
+function shuffleCards() {
+    const cardsArray = Array.from(cards); // Convert NodeList to Array for shuffling
 
-      // Reorder cards in the DOM
-      cardsArray.forEach(card => {
-          document.querySelector('.grid').appendChild(card); // Assuming there's a parent container
-      });
-  }
+    // Shuffle the cards randomly
+    cardsArray.sort(() => Math.random() - 0.5);
+
+    // Reorder the cards in the DOM to reflect the shuffle
+    cardsArray.forEach(card => {
+        document.querySelector('.grid').appendChild(card); // Append each shuffled card back to the grid
+    });
+}
+
 
   // Add event listeners to cards
   cards.forEach(card => {
@@ -90,17 +94,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Reset game functionality
-  function resetGame() {
-      matchedPairs = 0;
-      cards.forEach(card => {
-          card.classList.remove('flipped');
-          card.addEventListener('click', flipCard); // Re-enable click listeners after reset
-      });
-      shuffleCards();
-  }
+  // Reset game functionality
+function resetGame() {
+    matchedPairs = 0;
+    cards.forEach(card => {
+        card.classList.remove('flipped');
+        card.addEventListener('click', flipCard); // Re-enable click listeners after reset
+    });
+    shuffleCards(); // Shuffle the cards after the reset
+}
 
-  // End game functionality
-  function endGame() {
-      window.location.href = 'header'; // Redirect to end page
-      }
 });

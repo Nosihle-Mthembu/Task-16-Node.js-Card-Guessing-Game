@@ -15,10 +15,10 @@ app.get('/', (req, res) => {
     res.render('index', { title: 'Card Guessing Game' });
 });
 
-// Winning route
 app.get('/win', (req, res) => {
-    res.render('win', { title: 'You Win!' });
+    res.render('win', { title: 'You Won!' });
 });
+
 
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
