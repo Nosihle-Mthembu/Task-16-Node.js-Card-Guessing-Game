@@ -98,4 +98,9 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       shuffleCards();
   }
+
+  // End game functionality
+  function endGame() {
+      window.location.href = 'header'; // Redirect to end page
+      }
 });

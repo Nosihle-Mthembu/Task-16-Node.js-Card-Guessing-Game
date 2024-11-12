@@ -7,44 +7,42 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<%- include('partials/header') %>
 
 <!-- Content before starting the game -->
 <div class="game-instructions">
-    <h2>Welcome to the Card Guessing Game!</h2>
-    <p>Click the button below to start playing.</p>
-    <button id="startGameBtn">Start Game</button>
+    <%- include('partials/header') %>
 </div>
 
 <!-- The game grid, initially hidden -->
 <div class="game-container" id="gameContainer" style="display: none;">
-    <div class="grid" id="game-grid">
-      <div class="grid" id="game-grid">
-        <% 
-            // Create an array with numbers 1 to 18, each repeated twice
-            const numbers = [];
-            for (let i = 1; i <= 18; i++) {
-                numbers.push(i, i); // Add each number twice for pairs
-            }
-    
-            // Shuffle the array to randomize the card positions
-            numbers.sort(() => Math.random() - 0.5);
-        %>
-    
-        <% for (let i = 0; i < numbers.length; i++) { %>
-            <div class="card" data-index="<%= numbers[i] %>">
-                <div class="card-inner">
-                    <div class="card-front">?</div>
-                    <div class="card-back"><%= numbers[i] %></div>
+    <!-- <div class="grid" id="game-grid"> -->
+        <h1>Card Guessing Game!</h1>
+        <div class="grid" id="game-grid">
+            <% 
+                // Create an array with numbers 1 to 18, each repeated twice
+                const numbers = [];
+                for (let i = 1; i <= 18; i++) {
+                    numbers.push(i, i); // Add each number twice for pairs
+                }
+        
+                // Shuffle the array to randomize the card positions
+                numbers.sort(() => Math.random() - 0.5);
+            %>
+        
+            <% for (let i = 0; i < numbers.length; i++) { %>
+                <div class="card" data-index="<%= numbers[i] %>">
+                    <div class="card-inner">
+                        <div class="card-front">?</div>
+                        <div class="card-back"><%= numbers[i] %></div>
+                    </div>
                 </div>
-            </div>
-        <% } %>
-    </div>
-    
-    </div>
+            <% } %>
+        </div>
+    <!-- </div> -->
+    <button onclick="resetGame()">Reset Game</button>
 </div>
 
-<button onclick="resetGame()">Reset Game</button>
+
 
 <script src="/card/game.js"></script>
 </body>

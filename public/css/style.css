@@ -1,59 +1,158 @@
+/* General styling */
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+/* Instructions container */
+.game-instructions {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.game-instructions h2 {
+  font-size: 2em;
+  color: #333;
+}
+
+.game-instructions p {
+  font-size: 1.2em;
+  color: #666;
+}
+
+/* Start game button */
+#startGameBtn {
+  padding: 10px 20px;
+  font-size: 1em;
+  color: white;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 15px;
+}
+
+#startGameBtn:hover {
+  background-color: #388E3C;
+}
+
 /* Container for the game */
 .game-container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 /* The grid of cards */
-.grid {
+/* .grid {
   display: grid;
-  grid-template-columns: repeat(6, 100px); /* 6 columns */
-  grid-gap: 10px;
-}
+  grid-template-columns: repeat(6, 100px);
+  gap: 15px;
+  margin-top: 20px;
+} */
 
 /* Style for each card */
 .card {
   width: 100px;
   height: 100px;
   position: relative;
-  perspective: 1000px; /* Add perspective for 3D flipping */
+  perspective: 1000px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.05);
 }
 
 .card-inner {
   width: 100%;
   height: 100%;
   position: absolute;
-  transform-style: preserve-3d; /* 3D effect for flip */
+  transform-style: preserve-3d;
   transition: transform 0.5s;
 }
 
 .card.flipped .card-inner {
-  transform: rotateY(180deg); /* Flip the card when it's clicked */
+  transform: rotateY(180deg);
 }
 
 .card-front, .card-back {
   position: absolute;
   width: 100%;
   height: 100%;
-  backface-visibility: hidden; /* Hide the back face when flipped */
+  backface-visibility: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 2em;
+  font-size: 1.5em;
   font-weight: bold;
+  border-radius: 8px;
 }
 
 /* Style for the front of the card */
 .card-front {
   background-color: #f0f0f0;
-  color: black;
+  color: #333;
+  border: 2px solid #ddd;
 }
 
 /* Style for the back of the card (where the number will appear) */
 .card-back {
-  background-color: #4CAF50; /* Green background */
+  background-color: #4CAF50;
   color: white;
-  transform: rotateY(180deg); /* Rotate the back face */
+  transform: rotateY(180deg);
+  border: 2px solid #388E3C;
+}
+
+/* Reset game button */
+button[onclick="resetGame()"] {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1em;
+  color: white;
+  background-color: #FF5722;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button[onclick="resetGame()"]:hover {
+  background-color: #E64A19;
+}
+
+/* Updated Play Again Button */
+#resetGameBtn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1em;
+  color: white;
+  background-color: #FF5722;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#resetGameBtn:hover {
+  background-color: #E64A19;
+}
+
+/* Updated grid to ensure alignment */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(6, 100px); /* Adjust number as needed */
+  gap: 15px;
+  justify-content: center; /* Center-aligns the grid */
+  margin-top: 20px;
 }
