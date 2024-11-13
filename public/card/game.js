@@ -2,7 +2,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const startGameBtn = document.getElementById("startGameBtn");
     const gameContainer = document.getElementById("gameContainer");
     const gameInstructions = document.querySelector(".game-instructions");
-    const timerDisplay = document.getElementById("timer"); // Timer display element
+    const timerDisplay = document.getElementById("timer"); 
+    const pauseResumeButton = document.getElementById("pauseResumeButton");
 
     let firstCard = null;
     let secondCard = null;
@@ -10,39 +11,42 @@ document.addEventListener("DOMContentLoaded", () => {
     let matchedPairs = 0;
     const totalPairs = 18;
     const cards = document.querySelectorAll('.card');
-    let timeRemaining = 210; // Set the total time for the timer in seconds (2:30 minutes)
+    let timeRemaining = 210;
     let timerInterval;
-    let score = 0; // Track moves or pairs matched
+    let isPaused = false; // Track if the game is paused
 
     // Function to start the timer
     function startTimer() {
         timerInterval = setInterval(() => {
-            const minutes = Math.floor(timeRemaining / 60);
-            const seconds = timeRemaining % 60;
+            if (!isPaused) { // Only decrease time if the game is not paused
+                const minutes = Math.floor(timeRemaining / 60);
+                const seconds = timeRemaining % 60;
 
-            timerDisplay.textContent = `Time left: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-            timeRemaining--;
+                timerDisplay.textContent = `Time left: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                timeRemaining--;
 
-            if (timeRemaining < 0) {
-                clearInterval(timerInterval);
-                endGame("Time's up! Game over.");
+                if (timeRemaining < 0) {
+                    clearInterval(timerInterval);
+                    endGame("Time's up! Game over.");
+                }
             }
         }, 1000);
     }
 
-    // Function to end the game (either win or loss)
-    function endGame(message) {
-        // Store score and time in localStorage for both win/loss
-        localStorage.setItem('score', score);
-        localStorage.setItem('time', timeRemaining < 0 ? 0 : timeRemaining); // Ensure time doesn't go negative
-
-        if (message === "Time's up! Game over.") {
-            // Redirect to the lost page if the game is lost
-            window.location.href = '/lost';
+    // Pause/Resume button event listener
+    pauseResumeButton.addEventListener("click", () => {
+        isPaused = !isPaused; // Toggle pause state
+        pauseResumeButton.textContent = isPaused ? "Resume" : "Pause"; // Update button text
+        if (isPaused) {
+            lockBoard = true; // Prevent card interactions while paused
         } else {
-            // Game won, redirect to the win page
-            window.location.href = '/win';
+            lockBoard = false; // Enable card interactions when resumed
         }
+    });
+
+    // Function to end the game if time runs out
+    function endGame(message) {
+        alert(message);
         resetGame();
     }
 
@@ -66,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     function flipCard() {
-        if (lockBoard || this.classList.contains('matched')) return;
+        if (lockBoard || this.classList.contains('matched') || isPaused) return; // Check pause state
         if (this === firstCard) return;
 
         this.classList.add('flipped');
@@ -95,19 +99,20 @@ document.addEventListener("DOMContentLoaded", () => {
         secondCard.classList.add('matched');
         firstCard.removeEventListener('click', flipCard);
         secondCard.removeEventListener('click', flipCard);
-    
+
         matchedPairs++;
-        score++; // Increment score for each match found
-    
+
         if (matchedPairs === totalPairs) {
-            clearInterval(timerInterval); // Stop the timer when the game is won
-            endGame('You Won! Congratulations!');
-        } else if (timeRemaining < 0) {
-            endGame("Time's up! Game over.");
+            clearInterval(timerInterval);
+            setTimeout(() => {
+                alert('Congratulations, you matched all pairs!');
+                window.location.href = '/win';
+                resetGame();
+            }, 500);
         }
         resetBoard();
     }
-    
+
     function unflipCards() {
         lockBoard = true;
         setTimeout(() => {
@@ -121,13 +126,11 @@ document.addEventListener("DOMContentLoaded", () => {
         [firstCard, secondCard, lockBoard] = [null, null, false];
     }
 
-    document.getElementById('resetButton').addEventListener('click', resetGame);
-
     function resetGame() {
         matchedPairs = 0;
-        timeRemaining = 210; // Reset timer to 2:30
-        clearInterval(timerInterval); // Stop any existing timer
-        startTimer(); // Restart the timer
+        timeRemaining = 210;
+        clearInterval(timerInterval);
+        startTimer();
 
         cards.forEach(card => {
             card.classList.remove('flipped', 'matched');
