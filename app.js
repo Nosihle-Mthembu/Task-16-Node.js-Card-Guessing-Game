@@ -7,7 +7,7 @@ const PORT = 3000;
 // Set EJS as templating engine  
 app.set('view engine', 'ejs');  
   
-// Set static folder  
+//static folder  
 app.use(express.static(path.join(__dirname, 'public')));  
   
 // Home route  
@@ -21,13 +21,12 @@ app.get('/game', (req, res) => {
 });
 
 app.get('/lost', (req, res) => {
-    res.render('lost'); // Ensure the 'lost' template exists in the views folder
+    res.render('lost');
 });
 
 
 app.get('/win', (req, res) => {
-    res.render('win', { title: 'Congratulations!' }); // Ensure title is defined here
-});
+    res.render('win', { title: 'Congratulations!' });
   
 app.listen(PORT, () => {  
   console.log(`Server running at http://localhost:${PORT}`);  

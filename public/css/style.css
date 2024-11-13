@@ -1,4 +1,3 @@
-/* General styling */
 body {
   font-family: Arial, sans-serif;
   display: flex;
@@ -13,7 +12,6 @@ body {
   background-size: cover;
 }
 
-/* Instructions container */
 .game-instructions {
   text-align: center;
   margin-top: 50px;
@@ -46,7 +44,6 @@ body {
   background-color: #388E3C;
 }
 
-/* Container for the game */
 .game-container {
   display: flex;
   flex-direction: column;
@@ -109,8 +106,8 @@ body {
 }
 
 #resetButton {
-  background-color: #ff6b6b; /* Light red color */
-  color: #ffffff; /* White text color */
+  background-color: #ff6b6b;
+  color: #ffffff;
   border: none;
   border-radius: 5px;
   padding: 10px 20px;
@@ -123,21 +120,19 @@ body {
 }
 
 #resetButton:hover {
-  background-color: #ff4c4c; /* Darker red for hover effect */
+  background-color: #ff4c4c;
 }
 
 #resetButton:active {
-  transform: scale(0.95); /* Slightly reduce size on click */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Reduce shadow on click */
+  transform: scale(0.95);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-
-/* Updated grid to ensure alignment */
 .grid {
   display: grid;
-  grid-template-columns: repeat(6, 100px); /* Adjust number as needed */
+  grid-template-columns: repeat(6, 100px);
   gap: 15px;
-  justify-content: center; /* Center-aligns the grid */
+  justify-content: center;
   margin-top: 20px;
 }
 
@@ -154,16 +149,14 @@ body {
   animation: slideIn 0.6s ease-out;
 }
 
-/* Style for the heading */
 .win-message h1 {
   font-size: 2rem;
   color: #5886c4;
   margin-bottom: 20px;
 }
 
-/* Style for buttons */
 .win-message button {
-  background-color: #42ad62; /* Green background */
+  background-color: #42ad62;
   color: white;
   font-size: 1rem;
   padding: 12px 20px;
@@ -174,7 +167,6 @@ body {
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-/* Hover effect for the buttons */
 .win-message button:hover {
   background-color: #45a049;
   transform: scale(1.05);
@@ -182,7 +174,7 @@ body {
 
 /* Style for 'Go Back to Home' button */
 .win-message button:first-child {
-  background-color: #2196F3; /* Blue background */
+  background-color: #2196F3;
 }
 
 .win-message button:first-child:hover {
@@ -238,7 +230,6 @@ button:hover {
   }
 }
 
-/* Headings and paragraphs */
 .lost-message h1 {
   font-size: 2.5rem;
   color: #e74c3c;
@@ -257,22 +248,22 @@ button:hover {
   color: #333;
 }
 
-/* Home button styling */
+/* Home button styling for the lost page*/
 .home-button {
-  background-color: #3498db; /* Blue color */
+  background-color: #3498db;
 }
 
 .home-button:hover {
-  background-color: #2980b9; /* Darker blue on hover */
+  background-color: #2980b9;
   transform: scale(1.05);
 }
 
 /* Retry button styling */
 .retry-button {
-  background-color: #e67e22; /* Orange color */
+  background-color: #e67e22;
 }
 
 .retry-button:hover {
-  background-color: #d35400; /* Darker orange on hover */
+  background-color: #d35400;
   transform: scale(1.05);
 }

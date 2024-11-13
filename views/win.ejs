@@ -6,23 +6,22 @@
     <title><%= title %></title>
     <link rel="stylesheet" href="/css/style.css">
     <script>
-        // Fetch the score and time from localStorage
+        // Fetch
         window.onload = function() {
             const score = localStorage.getItem('score');
             const time = localStorage.getItem('time');
             
-            // Display the score and time on the page
+            // Display
             document.getElementById('score').textContent = score ? score : "0";
             document.getElementById('time').textContent = time ? time : "0:00";
         };
     </script>
 </head>
 <body>
-    <!-- views/win.ejs -->
     <div class="win-message">
         <h1>Congratulations! You Won!</h1>
         <p>Score: <span id="score">0</span></p>
-        <p>Time: <span id="time">0:00</span></p> <!-- Display time -->
+        <p>Time: <span id="time">0:00</span></p>
         <button onclick="window.location.href='/'">Go Back to Home</button>
         <button onclick="window.location.href='/'">Play Again</button>
     </div>

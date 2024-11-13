@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const cards = document.querySelectorAll('.card');
     let timeRemaining = 210;
     let timerInterval;
-    let isPaused = false; // Track if the game is paused
+    let isPaused = false;
 
     // Function to start the timer
     function startTimer() {
@@ -36,11 +36,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // Pause/Resume button event listener
     pauseResumeButton.addEventListener("click", () => {
         isPaused = !isPaused; // Toggle pause state
-        pauseResumeButton.textContent = isPaused ? "Resume" : "Pause"; // Update button text
+        pauseResumeButton.textContent = isPaused ? "Resume" : "Pause";
         if (isPaused) {
-            lockBoard = true; // Prevent card interactions while paused
+            lockBoard = true;
         } else {
-            lockBoard = false; // Enable card interactions when resumed
+            lockBoard = false;
         }
     });
 
