@@ -108,39 +108,29 @@ body {
   border: 2px solid #388E3C;
 }
 
-/* Reset game button */
-button[onclick="resetGame()"] {
-  margin-top: 20px;
-  padding: 10px 20px;
-  font-size: 1em;
-  color: white;
-  background-color: #FF5722;
+#resetButton {
+  background-color: #ff6b6b; /* Light red color */
+  color: #ffffff; /* White text color */
   border: none;
   border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-button[onclick="resetGame()"]:hover {
-  background-color: #E64A19;
-}
-
-/* Updated Play Again Button */
-#resetGameBtn {
-  margin-top: 20px;
   padding: 10px 20px;
-  font-size: 1em;
-  color: white;
-  background-color: #FF5722;
-  border: none;
-  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  margin-top: 20px;
 }
 
-#resetGameBtn:hover {
-  background-color: #E64A19;
+#resetButton:hover {
+  background-color: #ff4c4c; /* Darker red for hover effect */
 }
+
+#resetButton:active {
+  transform: scale(0.95); /* Slightly reduce size on click */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Reduce shadow on click */
+}
+
 
 /* Updated grid to ensure alignment */
 .grid {
@@ -151,31 +141,23 @@ button[onclick="resetGame()"]:hover {
   margin-top: 20px;
 }
 
-/* public/styles.css */
-.win-message {
-  text-align: center;
-  padding: 20px;
-  background-color: #4CAF50;
-  color: white;
-  border-radius: 5px;
-  margin-top: 20px;
-}
-
 /* Add styles for the win message container */
 .win-message {
   text-align: center;
   padding: 20px;
-  background-color: #5886c4;
+  background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   max-width: 500px;
   margin: 50px auto;
+  width: 85%;
+  animation: slideIn 0.6s ease-out;
 }
 
 /* Style for the heading */
 .win-message h1 {
   font-size: 2rem;
-  color: #e7ece7;
+  color: #5886c4;
   margin-bottom: 20px;
 }
 
@@ -205,4 +187,92 @@ button[onclick="resetGame()"]:hover {
 
 .win-message button:first-child:hover {
   background-color: #0b7dda;
+}
+
+#winPage, #losePage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  margin-top: 20px;
+}
+
+#finalScore, #finalTime {
+  font-size: 1.5rem;
+  color: #4CAF50;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+
+.lost-message {
+  text-align: center;
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  width: 85%;
+  max-width: 450px;
+  animation: slideIn 0.6s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+      transform: translateY(-30px);
+      opacity: 0;
+  }
+  to {
+      transform: translateY(0);
+      opacity: 1;
+  }
+}
+
+/* Headings and paragraphs */
+.lost-message h1 {
+  font-size: 2.5rem;
+  color: #e74c3c;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.lost-message p {
+  font-size: 1.2rem;
+  margin: 10px 0;
+  color: #555;
+}
+
+#score, #time {
+  font-weight: bold;
+  color: #333;
+}
+
+/* Home button styling */
+.home-button {
+  background-color: #3498db; /* Blue color */
+}
+
+.home-button:hover {
+  background-color: #2980b9; /* Darker blue on hover */
+  transform: scale(1.05);
+}
+
+/* Retry button styling */
+.retry-button {
+  background-color: #e67e22; /* Orange color */
+}
+
+.retry-button:hover {
+  background-color: #d35400; /* Darker orange on hover */
+  transform: scale(1.05);
 }

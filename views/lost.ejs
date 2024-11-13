@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title>
+    <title>Game Over</title>
     <link rel="stylesheet" href="/css/style.css">
+
     <script>
         // Fetch the score and time from localStorage
         window.onload = function() {
@@ -18,15 +19,13 @@
     </script>
 </head>
 <body>
-    <!-- views/win.ejs -->
-    <div class="win-message">
-        <h1>Congratulations! You Won!</h1>
+    <div class="lost-message">
+        <h1>Game Over! You Lost!</h1>
         <p>Score: <span id="score">0</span></p>
         <p>Time: <span id="time">0:00</span></p> <!-- Display time -->
-        <button onclick="window.location.href='/'">Go Back to Home</button>
-        <button onclick="window.location.href='/'">Play Again</button>
+        <button class="home-button" onclick="window.location.href='/'">Go Back to Home</button>
+        <button class="retry-button" onclick="window.location.href='/game'">Try Again</button>
     </div>
 </body>
 </html>
-
 
